@@ -5,8 +5,8 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const handleSubmit = async (e) => {
-    await swal("Success creation");
     e.preventDefault();
+    await swal("Success creation");
     setName("");
     setEmail("");
     setMessage("");
