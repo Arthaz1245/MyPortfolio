@@ -18,7 +18,12 @@ const Contact = () => {
         </h1>
       </div>
       <div className="pt-8">
-        <form action="" onSubmit={handleSubmit}>
+        <form
+          action=""
+          method="POST"
+          onSubmit={handleSubmit}
+          data-netlify="true"
+        >
           <div className="p-8">
             <label
               htmlFor=""
