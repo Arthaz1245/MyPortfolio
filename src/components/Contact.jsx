@@ -1,10 +1,11 @@
 import { useState } from "react";
-
+import swal from "sweetalert";
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    await swal("Success creation");
     e.preventDefault();
     setName("");
     setEmail("");
