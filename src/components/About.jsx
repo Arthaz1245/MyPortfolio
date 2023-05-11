@@ -1,5 +1,5 @@
 import React from "react";
-
+import CvSergio from "../assets/CVSergioMendoza.pdf";
 const About = () => {
   return (
     <div id="about" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
@@ -13,9 +13,12 @@ const About = () => {
         my profile
       </p>
       <div className="flex justify-center">
-        <button className="rounded-full flex justify-center items-center bg-slate-900 text-white  scale-110 p-5 m-50 hover:bg-red-800">
+        <a
+          className="rounded-full flex justify-center items-center bg-slate-900 text-white  scale-110 p-5 m-50 hover:bg-red-800"
+          href={CvSergio}
+        >
           CV
-        </button>
+        </a>
       </div>
     </div>
   );

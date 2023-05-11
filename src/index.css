@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* h{
+    color: #13138297;
+} */
+*{
+    scroll-behavior: smooth;
+}
