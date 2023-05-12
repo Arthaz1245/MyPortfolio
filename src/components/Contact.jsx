@@ -2,29 +2,27 @@ import { useState } from "react";
 import swal from "sweetalert";
 const Contact = () => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(false);
+  const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = { name, email, message };
-
-    fetch("/.MYPORTFOLIO/functions/sendEmail", {
-      method: "POST",
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          alert("Success!");
-          setName("");
-          setEmail("");
-          setMessage("");
-        } else {
-          throw new Error("Failed to send email");
-        }
-      })
-      .catch((error) => alert(error));
+    alert("Success!");
+    setName("");
+    setEmail("");
+    setSubject("");
+    setMessage("");
   };
+  function validateEmail(e) {
+    const validateEmail = e.target.value;
+    if (regexEmail.test(validateEmail)) {
+      setEmail(true);
+    } else {
+      setEmail(false);
+    }
+  }
   return (
     <div id="contact" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
       <div>
@@ -67,9 +65,32 @@ const Contact = () => {
               type="email"
               id="email"
               name="email"
-              value={email}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={validateEmail}
+              required
+            />
+            {!email ? (
+              <h6 className="text-[#f84141] text-center mt-2">
+                You need to enter the email
+              </h6>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="p-8">
+            <label
+              htmlFor=""
+              className="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Subject
+            </label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              value={subject}
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              onChange={(e) => setSubject(e.target.value)}
               required
             />
           </div>
