@@ -32,7 +32,7 @@ const Technologies = () => {
           Skills
         </h1>
       </div>
-      <div className="flex flex-col p-5 md:flex-row ">
+      <div className="flex flex-wrap p-5 pl-9 md:flex-row md:items-center justify-center">
         {technologiesArray.map((t, k) => (
           <div
             key={k}
