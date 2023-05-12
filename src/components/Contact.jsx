@@ -6,10 +6,24 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await swal("Success creation");
-    setName("");
-    setEmail("");
-    setMessage("");
+
+    const formData = { name, email, message };
+
+    fetch("/.MYPORTFOLIO/functions/sendEmail", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Success!");
+          setName("");
+          setEmail("");
+          setMessage("");
+        } else {
+          throw new Error("Failed to send email");
+        }
+      })
+      .catch((error) => alert(error));
   };
   return (
     <div id="contact" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
