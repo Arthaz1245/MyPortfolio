@@ -1,28 +1,37 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import swal from "sweetalert";
 const Contact = () => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState(false);
+  const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const form = useRef();
   let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    alert("Success!");
+    emailjs
+      .sendForm(
+        "service_pshtq1f",
+        "template_sv4mlbo",
+        form.current,
+        "wWcgensZ8UMykx6et"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    swal("Success");
     setName("");
     setEmail("");
     setSubject("");
     setMessage("");
   };
-  function validateEmail(e) {
-    const validateEmail = e.target.value;
-    if (regexEmail.test(validateEmail)) {
-      setEmail(true);
-    } else {
-      setEmail(false);
-    }
-  }
+
   return (
     <div id="contact" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
       <div>
@@ -36,6 +45,7 @@ const Contact = () => {
           method="POST"
           onSubmit={handleSubmit}
           data-netlify="true"
+          ref={form}
         >
           <div className="p-8">
             <label
@@ -65,17 +75,11 @@ const Contact = () => {
               type="email"
               id="email"
               name="email"
+              value={email}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              onChange={validateEmail}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
-            {!email ? (
-              <h6 className="text-[#f84141] text-center mt-2">
-                You need to enter the email
-              </h6>
-            ) : (
-              ""
-            )}
           </div>
           <div className="p-8">
             <label
