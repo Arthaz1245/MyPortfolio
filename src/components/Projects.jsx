@@ -3,6 +3,7 @@ import DogApiImg1 from "../assets/DogApiImg1.png";
 import NoveltyBooksImg1 from "../assets/NoveltyBooksImg1.png";
 import ProjectItem from "./ProjectItem";
 import PortfolioApi1 from "../assets/pictureprojectportfolio.jpg";
+import Chatsapp from "../assets/Chatsapp.png";
 const Projects = () => {
   return (
     <div id="projects" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
@@ -24,6 +25,11 @@ const Projects = () => {
           title="My Portfolio"
           img={PortfolioApi1}
           Link="https://poetic-sunshine-1aca3a.netlify.app"
+        />
+        <ProjectItem
+          title="Chatsapp"
+          img={Chatsapp}
+          Link="https://chat-socket-io-front-tau.vercel.app"
         />
       </div>
     </div>
