@@ -8,8 +8,8 @@ const About = () => {
       </h1>
       <p className="text-center py-8 ">
         Hi, I'm Sergio. I've always been really interested in the web
-        development.I've always wanted to developmy own website and be willing
-        to learn more and more everyday Here I want to share with you more about
+        development. I've always wanted to develop my own website and be willing
+        to learn more and more everyday. I want to share with you more about
         my profile
       </p>
       <div className="flex justify-center">
