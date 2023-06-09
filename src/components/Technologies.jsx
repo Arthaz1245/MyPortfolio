@@ -11,6 +11,8 @@ import ReduxImg from "../assets/technologies/redux.png";
 import TailwindImg from "../assets/technologies/tailwind.png";
 import MongoDbImg from "../assets/technologies/mongodb.png";
 import NodejsImg from "../assets/technologies/nodejs.png";
+import PythonImg from "../assets/technologies/python.png";
+import DjangoImg from "../assets/technologies/django.png";
 const Technologies = () => {
   const technologiesArray = [
     { name: "JavaScript", image: JavascriptImg },
@@ -24,6 +26,8 @@ const Technologies = () => {
     { name: "Tailwind", image: TailwindImg },
     { name: "MongoDB", image: MongoDbImg },
     { name: "NodeJs", image: NodejsImg },
+    { name: "Python", image: PythonImg },
+    { name: "Django", image: DjangoImg },
   ];
   return (
     <div id="technologies" className="w-full p-4">
