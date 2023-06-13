@@ -1,5 +1,5 @@
-import CvSergioEn from "../assets/Resume Sergio Mendoza.pdf";
-import CvSergioEs from "../assets/H.V.  Sergio Mendoza.pdf";
+import CvSergioEn from "../assets/Resume Sergio Mendoza .pdf";
+import CvSergioEs from "../assets/H.V.  Sergio Mendoza .pdf";
 const About = () => {
   return (
     <div id="about" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
@@ -12,7 +12,7 @@ const About = () => {
         to learn more and more everyday. I want to share with you more about my
         profile.
       </p>
-      <h1 className="text-4xl font-bold text-center text-[#13138297]">CV</h1>
+      <h1 className="text-4xl font-bold text-center text-[#0f0f9b97]">CV</h1>
       <div className=" flex flex-row justify-center">
         <div className="flex justify-center p-8">
           <a
