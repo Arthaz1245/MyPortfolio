@@ -41,7 +41,7 @@ const Projects = () => {
         <ProjectItem
           title="WeatherApi"
           img={WeatherApi}
-          Link="https://app.netlify.com/sites/sage-ganache-e8f271/overview"
+          Link="https://sage-ganache-e8f271.netlify.app"
         />
       </div>
     </div>
