@@ -7,7 +7,6 @@ const Contact = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const form = useRef();
-  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
   const handleSubmit = async (e) => {
     e.preventDefault();
     emailjs

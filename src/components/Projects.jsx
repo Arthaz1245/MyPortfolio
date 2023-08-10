@@ -5,6 +5,7 @@ import ProjectItem from "./ProjectItem";
 import PortfolioApi1 from "../assets/pictureprojectportfolio.jpg";
 import Chatsapp from "../assets/Chatsapp.png";
 import windbnb from "../assets/airbnbapi.png";
+import WeatherApi from "../assets/WeatherApi.png";
 const Projects = () => {
   return (
     <div id="projects" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
@@ -36,6 +37,11 @@ const Projects = () => {
           title="Chatsapp"
           img={Chatsapp}
           Link="https://chat-socket-io-front-tau.vercel.app"
+        />
+        <ProjectItem
+          title="WeatherApi"
+          img={WeatherApi}
+          Link="https://app.netlify.com/sites/sage-ganache-e8f271/overview"
         />
       </div>
     </div>
