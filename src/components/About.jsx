@@ -1,5 +1,5 @@
-import CvSergioEn from "../assets/Resume Sergio Mendoza (1).pdf";
-import CvSergioEs from "../assets/HV Sergio Mendoza (1).pdf";
+import CvSergioEn from "../assets/cv_en.pdf";
+import CvSergioEs from "../assets/cv_es.pdf";
 const About = () => {
   return (
     <div id="about" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
