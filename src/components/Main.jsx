@@ -36,7 +36,7 @@ const Main = () => {
             />
           </h2>
           <div className="flex justify-between pt-6 max-w[200px] w-full">
-            <a href="https://www.linkedin.com/in/sergio-mendoza-33025113b/">
+            <a href="https://www.linkedin.com/in/sergiomendoza-softwareengineer/">
               <AiFillLinkedin size={20} className="cursor-pointer" />
             </a>
             <a href="https://github.com/Arthaz1245">
