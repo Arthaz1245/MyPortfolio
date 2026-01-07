@@ -1,4 +1,4 @@
-import CvSergioEn from "../assets/cv_en.pdf";
+import CvSergioEn from "../assets/Resume-Sergio Mendoza.pdf";
 import CvSergioEs from "../assets/cv_es.pdf";
 const About = () => {
   return (
