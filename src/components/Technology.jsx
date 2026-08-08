@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const Technology = ({ img, title }) => {
   return (
@@ -10,6 +10,11 @@ const Technology = ({ img, title }) => {
       <h1 className="flex justify-center items-center">{title}</h1>
     </div>
   );
+};
+
+Technology.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Technology;

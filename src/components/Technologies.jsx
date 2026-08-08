@@ -1,4 +1,3 @@
-import React from "react";
 import Technology from "./Technology.jsx";
 import JavascriptImg from "../assets/technologies/javascript.png";
 import TypescriptImg from "../assets/technologies/typescript.png";
@@ -37,9 +36,9 @@ const Technologies = () => {
         </h1>
       </div>
       <div className="flex flex-wrap p-5 pl-9 md:flex-row md:items-center justify-center">
-        {technologiesArray.map((t, k) => (
+        {technologiesArray.map((t) => (
           <div
-            key={k}
+            key={t.name}
             className="border border-sky-100  rounded-full flex flex-wrap flex-row m-5 w-24 h-24 md:items-center md:justify-center"
           >
             <Technology img={t.image} title={t.name} />

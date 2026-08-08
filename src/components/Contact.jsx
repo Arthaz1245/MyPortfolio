@@ -1,34 +1,47 @@
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import swal from "sweetalert";
+
+const inputClass =
+  "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6";
+
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
   const form = useRef();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_pshtq1f",
-        "template_sv4mlbo",
+    setSending(true);
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         form.current,
-        "wWcgensZ8UMykx6et"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
-    swal("Success");
-    setName("");
-    setEmail("");
-    setSubject("");
-    setMessage("");
+      swal(
+        "Success",
+        "Your message has been sent. I'll get back to you soon!",
+        "success"
+      );
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } catch (error) {
+      console.error(error);
+      swal(
+        "Error",
+        "Something went wrong. Please try again or reach me directly on LinkedIn.",
+        "error"
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -39,16 +52,10 @@ const Contact = () => {
         </h1>
       </div>
       <div className="pt-8">
-        <form
-          action=""
-          method="POST"
-          onSubmit={handleSubmit}
-          data-netlify="true"
-          ref={form}
-        >
+        <form onSubmit={handleSubmit} ref={form}>
           <div className="p-8">
             <label
-              htmlFor=""
+              htmlFor="name"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
               Name
@@ -58,14 +65,15 @@ const Contact = () => {
               id="name"
               name="name"
               value={name}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Your name"
+              className={inputClass}
               onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
           <div className="p-8">
             <label
-              htmlFor=""
+              htmlFor="email"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
               Email
@@ -75,14 +83,15 @@ const Contact = () => {
               id="email"
               name="email"
               value={email}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="you@example.com"
+              className={inputClass}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div className="p-8">
             <label
-              htmlFor=""
+              htmlFor="subject"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
               Subject
@@ -92,14 +101,15 @@ const Contact = () => {
               id="subject"
               name="subject"
               value={subject}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="What is this about?"
+              className={inputClass}
               onChange={(e) => setSubject(e.target.value)}
               required
             />
           </div>
           <div className="p-8">
             <label
-              htmlFor=""
+              htmlFor="message"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
               Message
@@ -108,17 +118,19 @@ const Contact = () => {
               id="message"
               name="message"
               value={message}
+              placeholder="Write your message here..."
               onChange={(e) => setMessage(e.target.value)}
               rows={3}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className={inputClass}
               required
             />
             <div>
               <button
                 type="submit"
-                className="bg-[#001b5e] text-gray-100 mt-4 w-full p-4 rounded-lg"
+                disabled={sending}
+                className="bg-[#001b5e] text-gray-100 mt-4 w-full p-4 rounded-lg disabled:opacity-50"
               >
-                Send
+                {sending ? "Sending..." : "Send"}
               </button>
             </div>
           </div>
