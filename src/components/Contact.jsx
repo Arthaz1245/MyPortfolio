@@ -1,9 +1,29 @@
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import swal from "sweetalert";
+import { AiFillLinkedin, AiFillGithub, AiFillTwitterCircle } from "react-icons/ai";
+import SectionTitle from "./SectionTitle";
 
 const inputClass =
-  "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6";
+  "block w-full rounded-lg border border-white/10 bg-surface px-4 py-3 text-white placeholder:text-slate-500 transition focus:border-accent-cyan focus:outline-none focus:ring-2 focus:ring-accent-cyan/40";
+
+const socials = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/sergiomendoza-softwareengineer/",
+    icon: <AiFillLinkedin size={20} />,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/Arthaz1245",
+    icon: <AiFillGithub size={20} />,
+  },
+  {
+    label: "Twitter",
+    href: "https://twitter.com/sergiomendozap3",
+    icon: <AiFillTwitterCircle size={20} />,
+  },
+];
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -45,98 +65,125 @@ const Contact = () => {
   };
 
   return (
-    <div id="contact" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
-      <div>
-        <h1 className="text-4xl font-bold text-center text-[#13138297]">
-          Contact
-        </h1>
-      </div>
-      <div className="pt-8">
-        <form onSubmit={handleSubmit} ref={form}>
-          <div className="p-8">
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={name}
-              placeholder="Your name"
-              className={inputClass}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="p-8">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="you@example.com"
-              className={inputClass}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="p-8">
-            <label
-              htmlFor="subject"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Subject
-            </label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={subject}
-              placeholder="What is this about?"
-              className={inputClass}
-              onChange={(e) => setSubject(e.target.value)}
-              required
-            />
-          </div>
-          <div className="p-8">
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={message}
-              placeholder="Write your message here..."
-              onChange={(e) => setMessage(e.target.value)}
-              rows={3}
-              className={inputClass}
-              required
-            />
-            <div>
-              <button
-                type="submit"
-                disabled={sending}
-                className="bg-[#001b5e] text-gray-100 mt-4 w-full p-4 rounded-lg disabled:opacity-50"
-              >
-                {sending ? "Sending..." : "Send"}
-              </button>
+    <section id="contact" className="py-24">
+      <div className="container-section">
+        <SectionTitle
+          overline="Contact"
+          title="Let&apos;s work together"
+          subtitle="Have a project in mind or just want to say hi? Drop me a message and I&apos;ll get back to you."
+        />
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+          <div>
+            <p className="leading-relaxed text-slate-400">
+              I&apos;m currently open to new opportunities and interesting
+              projects. Whether it&apos;s a full product, a feature, or a quick
+              question, I&apos;d love to hear from you.
+            </p>
+            <div className="mt-8">
+              <h3 className="font-heading text-lg font-semibold text-white">
+                Find me online
+              </h3>
+              <div className="mt-4 flex gap-4">
+                {socials.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-slate-300 transition-all duration-200 hover:border-accent-cyan hover:text-accent-cyan hover:shadow-glow"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </form>
+
+          <form onSubmit={handleSubmit} ref={form} className="space-y-5">
+            <div>
+              <label
+                htmlFor="name"
+                className="mb-1.5 block text-sm font-medium text-slate-300"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={name}
+                placeholder="Your name"
+                className={inputClass}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="mb-1.5 block text-sm font-medium text-slate-300"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="you@example.com"
+                className={inputClass}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="subject"
+                className="mb-1.5 block text-sm font-medium text-slate-300"
+              >
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={subject}
+                placeholder="What is this about?"
+                className={inputClass}
+                onChange={(e) => setSubject(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="message"
+                className="mb-1.5 block text-sm font-medium text-slate-300"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={message}
+                placeholder="Write your message here..."
+                onChange={(e) => setMessage(e.target.value)}
+                rows={4}
+                className={inputClass}
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={sending}
+              className="btn-primary w-full disabled:opacity-60"
+            >
+              {sending ? "Sending..." : "Send message"}
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,9 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* h{
-    color: #13138297;
-} */
-*{
-    scroll-behavior: smooth;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background font-sans text-slate-300 antialiased;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0f1e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee;
+}
+
+:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 2px;
+}
+
+@layer components {
+  .container-section {
+    @apply mx-auto w-full max-w-6xl px-4 md:px-8;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent-cyan to-accent-blue px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-glow transition-transform duration-200 hover:scale-105;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:border-accent-cyan hover:text-accent-cyan;
+  }
 }

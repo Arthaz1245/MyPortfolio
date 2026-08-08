@@ -1,18 +1,23 @@
-import About from "./components/About";
-import Contact from "./components/Contact";
+import Navbar from "./components/Navbar";
 import Main from "./components/Main";
+import About from "./components/About";
 import Projects from "./components/Projects";
-import Sidenav from "./components/Sidenav";
 import Technologies from "./components/Technologies";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+
 function App() {
   return (
     <>
-      <Sidenav />
-      <Main />
-      <About />
-      <Projects />
-      <Technologies />
-      <Contact />
+      <Navbar />
+      <main>
+        <Main />
+        <About />
+        <Projects />
+        <Technologies />
+        <Contact />
+      </main>
+      <Footer />
     </>
   );
 }
